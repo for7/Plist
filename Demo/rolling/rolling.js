@@ -4,7 +4,7 @@
   function Rolling (config) {
     this.config = config
     this.contentEl = '' // 容器
-    this.rollingId = 0 // 内部随机ID
+    this.rollingId = 0 // 当前滚动实例ID
     this.contentEl_height = 0 // 容器的高度（内边距）
     this.contentEl_width = 0 // 容器的宽度（内边距）
     this.isAutoContent = true // 是否让子元素（box）默认填充满容器
@@ -18,18 +18,20 @@
     this.isRun= true // 是否运行
     this.textIndex = 0
     this.timeHeader = 0 // 定时器
-    this.timeLong = 2500
+    this.timeLong = 2500 // 2500毫秒后切换
     this.init()
   }
   Rolling.prototype.init = function () {
     if (!this.config) return
-    this.rollingId = parseInt(Math.random() * 1000) // 生成内部随机ID
+    this.rollingId = this.config.rollingId || parseInt(Math.random() * 1000) // 不提供则生成内部随机ID
+    this.timeLong = this.config.timeLong || 2500
     this.contentEl = document.querySelector(this.config.content)
     if (!this.contentEl) {
       console.log('获取容器失败')
       return
     }
     this.contentEl.style.position = 'relative'
+    this.contentEl.id = this.rollingId
     this.contentEl_height = this.contentEl.clientHeight
     this.contentEl_width = this.contentEl.clientWidth
     this.createBox()
@@ -44,6 +46,7 @@
     for (var i = 1; i <= num; i++) {
       var style = ''
       var boxID = 'rolling_box_' + this.rollingId
+      var boxID_item = 'rolling_box_' + i
       var boxID_self = ' rolling_box_' + this.rollingId + '_' + i
       if (this.isAutoContent) {
         style = 'width: ' + this.contentEl_width + 'px; height:auto;' + 'position: ' + 'absolute;' + 'top: 0;' + 'left: 0;'
@@ -55,7 +58,7 @@
         style += 'transform:translate3d(0,  ' + this.contentEl_height + 'px, 0);'
       }
       var det = this.config.data ? this.config.data[i] : i
-      boxHtml += '<div class="rolling_box '+ boxID + boxID_self +'" style="'+ style +'">'+ det +'</div>'
+      boxHtml += '<div class="rolling_box '+ boxID + ' ' + boxID_item + ' ' + boxID_self +'" style="'+ style +'">'+ det +'</div>'
     }
     this.contentEl.innerHTML = boxHtml
     // 缓存动画单元的DOM

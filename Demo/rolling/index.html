@@ -18,23 +18,63 @@
         font-size: 10px;
         margin-top: 10px;
       }
+      .rolling_iframe{
+        overflow: hidden;
+        width: 200px;
+        padding-top: 50px;
+        border: 1px solid #f9d5d5;
+      }
+      .rolling_2{
+        width: 200px;
+        height: 100px;
+        overflow: hidden;
+        background-color: #fff;
+      }
+      .rolling_2 .rolling_box{
+        background-color: #fff;
+      }
     </style>
   </head>
   <body>
     <div class="rolling_1">
 
     </div>
+
+    <div class="rolling_iframe">
+      <div class="rolling_2">
+
+      </div>
+    </div>
   </body>
   <script src="./rolling.js"></script>
   <script type="text/javascript">
   var rolling_config1 = {
     content: '.rolling_1',
+    rollingId: 'uop1',
+    timeLong: 2500,
     data: [
       '两个属性的差距于是就显而易见了。同样返回元素的高度--两个属性的差距于是就显而易见了。同样返回元素的高度',
       '但是，问题来了，我们想获取元素本身的高度呢？于是--但是，问题来了，我们想获取元素本身的高度呢？于是'
     ]
   }
   var rolling = new Rolling(rolling_config1)
-    console.log(1, rolling)
+
+    var rolling_config2 = {
+      content: '.rolling_2',
+      rollingId: 'uop2',
+      timeLong: 2700,
+      data: [
+        'Look at the stars 仰望天上的星星 ',
+        'Look how they shine for you 看着它们为你绽放光芒',
+        'And everything you do',
+        'Yeah, they were all yellow 而你却如此胆怯小心',
+        'I came along 跟随着你',
+        'I wrote a song for you 我为你写下了一首情歌',
+        'And all the things you do 因为你表现出的胆怯小心 ',
+        'And it was called yellow 歌名叫做"黄色"',
+        'So then I took my turn 我会全心全意',
+      ]
+    }
+    var rolling2 = new Rolling(rolling_config2)
   </script>
 </html>
