@@ -21,7 +21,7 @@ var rolling_config1 = {
 var rolling = new Rolling(rolling_config1)
 ```
 ## 参数
-`config`为配置参数：
+new Rolling(config) `config`为配置参数：
 
 | name | value | 备注 |
 | ---- | ----- | ---- |
@@ -35,7 +35,7 @@ var rolling = new Rolling(rolling_config1)
 var rolling = new Rolling(rolling_config1)
 var rolling2 = new Rolling(rolling_config2)
 ```
-# 实例
+# 示例
 [Demo](https://github.com/for7/Plist/blob/7e74b71f1c5c434770f4babb142698ee12d69c17/Demo/rolling/index.html#L51)
 # 实现原理
 ![rolling](rolling.png)
