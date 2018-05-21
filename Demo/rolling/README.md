@@ -1,5 +1,6 @@
 
-# js简单的文字滚动效果
+# Rolling.js 简单的文字滚动效果
+<hr>
 ![1](demo1.gif)
 ![2](demo2.gif)
 
