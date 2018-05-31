@@ -1,5 +1,7 @@
-##### css字符截断（文字超出省略）
-单行
+
+## css字符截断（文字超出省略）
+
+- 单行
 ```css
 .text-overflow-ellipsis {
    -o-text-overflow: ellipsis;
@@ -9,7 +11,8 @@
    white-space: nowrap;
   }
 ```
-多行实现溢出省略
+
+- 多行实现溢出省略
 ```css
 @mixin boxClamp($v:1){
   overflow:hidden;
@@ -22,8 +25,7 @@
 }
 ```
 
-在Sass中完全可以定义一个Mixins来解决单行还是多行字符串截断：
-
+- 在Sass中完全可以定义一个Mixins来解决单行还是多行字符串截断：
 ```sass
   @mixin ellipsis-overflow($line: 1, $substract: 0) {
     @if $line == 1 {
@@ -40,7 +42,7 @@
     }
 ```
 
-使用JS来截取字符串：
+- 使用JS来截取字符串：
 ```javascript
 function truncateString (str, num, endChar) {
   var truncd = '';
